@@ -37,7 +37,7 @@ def generate_text(input_text: str, weights_version: Literal["0.5b", "1b", "3b"] 
 
 if __name__ == "__main__":
 
-    input_text = "たまごっちとは何ですか？"
+    input_text = "なにわ男子について教えてください"
 
     output = generate_text(input_text, weights_version="3b")
     print(output)
