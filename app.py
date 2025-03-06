@@ -1,13 +1,14 @@
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
 
+from typing import Literal
+
 from timer import stop_watch
 
 
 @stop_watch
-def generate_text(input_text: str) -> str:
-    # TODO: Replace model_name
-    model_name = "cyberagent/open-calm-small"
+def generate_text(input_text: str, weights_version: Literal["0.5b", "1b", "3b"] = "3b") -> str:
+    model_name = f"sbintuitions/sarashina2.2-{weights_version}-instruct-v0.1"
 
     model = AutoModelForCausalLM.from_pretrained(model_name)
     tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -38,5 +39,5 @@ if __name__ == "__main__":
 
     input_text = "たまごっちとは何ですか？"
 
-    output = generate_text(input_text)
+    output = generate_text(input_text, weights_version="3b")
     print(output)
